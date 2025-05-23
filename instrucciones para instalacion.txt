@@ -1,0 +1,38 @@
+
+
+# clonamos el repo https://github.com/harvard-lil/olaw.git
+git clone https://github.com/cybershop46-us/Olaw_Exp.git
+
+#entramos al folder Olaw
+cd olaw
+
+# descargamo Instalamos poetry
+curl -sSL https://install.python-poetry.org | python3 -
+
+
+# agregamos el paty de poetry
+
+export PATH ="$HOME/.local/bin:$PATH"
+
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+
+#instalamos poetry
+poetry install
+
+# verficamos la version de poetry
+poetry --version
+
+
+# copiamos el .env
+cp .env.example .env
+
+# enviamos credenciales de open ai y courtlistener
+nano .env
+
+## Make the script executable and run it
+
+chmod +x patch_courtlistener.py
+python3 patch_courtlistener.py
+#corremos el sofrware
+PYTHONPATH=. poetry run flask --app wsgi run --host=0.0.0.0 --port=8080
