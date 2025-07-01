@@ -29,6 +29,7 @@ cp .env.example .env
 
 # enviamos credenciales de open ai y courtlistener
 nano .env
+# asegúrate de definir COURT_LISTENER_API_KEY en el archivo .env
 
 ## Make the script executable and run it
 
